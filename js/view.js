@@ -38,14 +38,20 @@ export default class View {
           <td>${toDo.title}</td>
           <td>${toDo.description}</td>
           <td class="text-center">
-                <input type="checkbox">
-              </td>
-              <td class="text-right">
+
+          </td>
+          <td class="text-right">
                 <button class="btn btn-primary mb-1">
                   <i class="fa fa-pencil"></i>
                 </button>
           </td>
         `;
+
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.checked = toDo.completed;
+        row.children[2].appendChild(checkbox);
+        checkbox.onclick = () => this.toggleCompleted(toDo.id);
 
         const removeBtn = document.createElement('button');
         removeBtn.classList.add('btn', 'btn-danger', 'mb-1', 'ml-1');
@@ -53,6 +59,13 @@ export default class View {
         row.children[3].appendChild(removeBtn);
         removeBtn.onclick = () => this.removeToDo(toDo.id);
     }
+
+    // llama a la función de detectar check en model
+
+    toggleCompleted(id) {
+        this.model.toggleCompleted(id);
+    }
+
     /*
         Con el id de la tarea se elimina del modelo
         y del HTML

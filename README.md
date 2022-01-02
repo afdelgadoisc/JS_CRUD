@@ -1,2 +1,2 @@
-# JS_CRUD
-Creación de un CRUD con Javascript
+# Lista de Tareas con JS
+Creación de una lista de tareas con Javascript, HTML y CSS
